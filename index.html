@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liveoak Compatibility Test</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/g/lodash@4.16.3,jquery@3.1.1,q@1.0.1"></script>
+  <script src="modernizr.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!--<img class="logo" src="logo-on-white.png" width="136.5" height="37"/>-->
+    <h3>System Compatibility Test</h3>
+    <div class="table-responsive">
+      <table class="table test-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Test</th>
+          </tr>
+        </thead>
+        <tbody id="tests">
+          <noscript>
+            <tr class="red">
+              <td><svg width="24" height="24"><circle cx="50%" cy="50%" r="50%"/></svg></td>
+              <td><p>JavaScript is turned off</p></td>
+            </tr>
+          </noscript>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="compatibility_test.js"></script>
+
+</body>
+</html>

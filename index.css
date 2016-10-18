@@ -1,0 +1,10 @@
+img.logo { margin-top: 10px; }
+.test-table td, .test-table th {
+  border: none;
+}
+#tests tr circle { fill: gray; }
+#tests tr p { color: gray; }
+#tests tr.red circle { fill: red; }
+#tests tr.red p { color: red; }
+#tests tr.green circle { fill: green; }
+#tests tr.green p { color: green; }
