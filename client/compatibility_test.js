@@ -1,8 +1,12 @@
 var testHtml = _.template(
   '<tr id="<%=test.id%>" class="<%=test.state%>">' +
     '<td>' +
-      '<svg width="24" height="24">' +
+      '<svg class="status" width="24" height="24" viewBox="0 0 1792 1792">' +
         '<circle cx="50%" cy="50%" r="50%"/>' +
+        '<g transform="translate(160 160) scale(0.8)">' +
+          '<path class="check" d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"/>' +
+          '<path class="times" d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>' +
+        '</g>' +
       '</svg>' +
     '</td>' +
     '<td>' +
@@ -72,7 +76,7 @@ tests.push({
     var deferred = Q.defer(), ws;
     var payload = "HELLO";
     try {
-      ws = io("ws://echo.websocket.org/", {
+      ws = io("ws://localhost:8080/", {
         reconnection: true,
         reconnectionDelay: 1000,
         reconnectionDelayMax: 5000,

@@ -2,9 +2,15 @@ img.logo { margin-top: 10px; }
 .table.test-table td, .table.test-table th {
   border: none;
 }
-.tests tr circle { fill: gray; }
+.tests tr circle,
+.tests tr path { fill: gray; }
 .tests tr p { color: gray; }
+.tests tr path { visibility: hidden; }
+
 .tests tr.red circle { fill: red; }
+.tests tr.red path.times { fill: white; visibility: visible; }
 .tests tr.red p { color: red; }
+
 .tests tr.green circle { fill: green; }
+.tests tr.green path.check { fill: white; visibility: visible;}
 .tests tr.green p { color: green; }
