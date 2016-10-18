@@ -16,7 +16,8 @@ var addDetail = function($tr, messages) {
 
 var tests = [];
 tests.push({
-  id: 'websockets',
+  id: 'ws-support',
+  to: '#ws-tests',
   title: 'Browser support for WebSocket API',
   state: 'pending',
   predicate: function($tr) {
@@ -24,7 +25,8 @@ tests.push({
   }
 });
 tests.push({
-  id: 'websocket-connected',
+  id: 'ws-connected',
+  to: '#ws-tests',
   title: 'WebSocket connection to host',
   state: 'pending',
   predicate: function($tr) {
@@ -45,24 +47,86 @@ tests.push({
         addDetail($tr, ["WebSocket error"]);
         deferred.reject();
       }
-      ws.onclose = function(e) {
-        if(!e.wasClean || e.code === 1006) {
-          addDetail($tr, ["WebSocket connection failed: "+e.code])
-          deferred.reject();
-        }
-      }
-    } catch(e) {
+    } catch (e) {
       addDetail($tr, ["Exception thrown", e.message]);
       deferred.reject();
     }
     return deferred.promise;
   }
 });
+tests.push({
+  id: 'sio-loaded',
+  to: '#sio-tests',
+  title: 'Socket.IO loaded',
+  state: 'pending',
+  predicate: function($tr) {
+    return Q(!!io);
+  }
+});
+tests.push({
+  id: 'sio-connected',
+  to: '#sio-tests',
+  title: 'Socket.IO connection to host',
+  state: 'pending',
+  predicate: function($tr) {
+    var deferred = Q.defer(), ws;
+    var payload = "HELLO";
+    try {
+      ws = io("ws://echo.websocket.org/", {
+        reconnection: true,
+        reconnectionDelay: 1000,
+        reconnectionDelayMax: 5000,
+        reconnectionAttempts: 5
+      });
+      ws.on('connect', function() {
+        ws.send(payload);
+      });
+      ws.on('connect_error', function(e) {
+        console.log('connect_timeout', e.message);
+      });
+      ws.on('connect_timeout', function(e) {
+        console.log('connect_timeout', e.message);
+      });
+      ws.on('reconnect', function(e) {
+        console.log('reconnect', e);
+      });
+      ws.on('reconnect_attempt', function(n) {
+        console.log('reconnect_attempt number ' + n);
+      });
+      ws.on('reconnecting', function(n) {
+        console.log('reconnecting, attempt number ' + n);
+      });
+      ws.on('reconnect_error', function(e) {
+        console.log('reconnect_error', e.message);
+      });
+      ws.on('reconnect_failed', function() {
+        addDetail($tr, ["unable to connect", "reconnection failed"]);
+        deferred.reject();
+      });
+      ws.on('message', function(data) {
+        if(data === payload) {
+          deferred.resolve();
+        } else {
+          addDetail($tr, ["unexpected behavior: sent "+payload+", received "+data]);
+          deferred.reject();
+        }
+      });
+      ws.on('error', function(e) {
+        addDetail($tr, ["WebSocket error", e]);
+        deferred.reject();
+      });
+    } catch (e) {
+      addDetail($tr, ["Exception thrown", e.message]);
+      deferred.reject();
+    }
+    return deferred.promise;
+  }
+})
 
 var performTest = function(test) {
   var $row = testHtml(test),
       deferred = Q.defer();
-  $('#tests').append(testHtml(test));
+  $(test.to).append(testHtml(test));
   var $tr = $('#' + test.id);
   test.predicate($tr).then(function() {
     $tr.removeClass('pending').removeClass('red').addClass('green');
@@ -74,7 +138,7 @@ var performTest = function(test) {
   return deferred.promise;
 }
 
-$('#tests').append(testHtml({
+$('#ws-tests, #sio-tests').append(testHtml({
   id: 'javascript',
   state: 'green',
   title: 'JavaScript is enabled'
