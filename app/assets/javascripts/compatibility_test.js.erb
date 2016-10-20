@@ -113,7 +113,7 @@ tests.push({
     var payload = "HELLO";
     try {
       ActionCable.startDebugging();
-      consumer = ActionCable.createConsumer("wss://liveoak.dev:3000/cable");
+      consumer = ActionCable.createConsumer();
       subscription = consumer.subscriptions.create("EchoChannel", {
         initialized: function() {
           console.log("ActionCable subscription initialized");
