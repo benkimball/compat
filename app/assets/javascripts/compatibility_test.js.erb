@@ -1,5 +1,7 @@
+_.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+
 var testHtml = _.template(
-  '<tr id="<%=test.id%>" class="<%=test.state%>">' +
+  '<tr id="{{test.id}}" class="{{test.state}}">' +
     '<td>' +
       '<svg class="status" width="24" height="24" viewBox="0 0 1792 1792">' +
         '<circle cx="50%" cy="50%" r="50%"/>' +
@@ -11,13 +13,13 @@ var testHtml = _.template(
       '</svg>' +
     '</td>' +
     '<td>' +
-      '<p><%=test.title%></p>' +
+      '<p>{{test.title}}</p>' +
     '</td>' +
   '</tr>', {variable: 'test'});
 
 var browserHtml = _.template(
-  '<p>You are running <%=browser.name%> version <%=browser.version%> on <%=browser.os%>.</p>' +
-  '<pre class="small"><%=browser.agent%></pre>', {variable: 'browser'});
+  '<p>You are running {{browser.name}} version {{browser.version}} on {{browser.os}}.</p>' +
+  '<pre class="small">{{browser.agent}}</pre>', {variable: 'browser'});
 
 var addDetail = function($tr, messages) {
   $('td:last-of-type', $tr).append('<pre>'+messages.join("\n")+'</pre>');
