@@ -81,7 +81,7 @@ tests.push({
     var deferred = Q.defer(), ws;
     var payload = "HELLO";
     try {
-      ws = io("wss://socket-io-test.liveoak.net/", {
+      ws = io("wss://socket-io-echo.herokuapp.com/", {
         reconnection: true,
         reconnectionDelay: 1000,
         reconnectionDelayMax: 5000,
