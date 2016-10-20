@@ -1,4 +1,5 @@
-var app = require('http').createServer(handler).listen(8080);
+/* a most-basic socket.io echo server for use in testing. */
+var app = require('http').createServer(handler).listen(80);
 
 function handler(req, res) {
   res.writeHead(200);
