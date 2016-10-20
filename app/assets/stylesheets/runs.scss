@@ -1,0 +1,41 @@
+// Place all the styles related to the runs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@-webkit-keyframes spin { from {transform: rotate(0);} to {transform: rotate(180deg);} }
+@-moz-keyframes spin { from {transform: rotate(0);} to {transform: rotate(180deg);} }
+@-o-keyframes spin { from {transform: rotate(0);} to {transform: rotate(180deg);} }
+@keyframes spin { from {transform: rotate(0);} to {transform: rotate(180deg);} }
+
+img.logo { margin-top: 10px; }
+.table.test-table {
+  td, th { border: none; }
+}
+.tests tr {
+
+  rect.spin {
+    -webkit-animation: 1s linear 0s infinite normal spin;
+    -moz-animation: 1s linear 0s infinite normal spin;
+    -o-animation: 1s linear 0s infinite normal spin;
+    animation: 1s linear 0s infinite normal spin;
+    transform-origin: 50% 50%;
+    fill: white;
+  }
+
+  circle, path { fill: gray; }
+  p { color: gray; }
+  path { visibility: hidden; }
+  &.red {
+    circle { fill: red; }
+    path.times { fill: white; visibility: visible; }
+    p { color: red; }
+    rect.spin { visibility: hidden; }
+  }
+  &.green {
+    circle { fill: green; }
+    path.check { fill: white; visibility: visible; }
+    p { color: green; }
+    rect.spin { visibility: hidden; }
+  }
+}
+
