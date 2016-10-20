@@ -25,45 +25,6 @@ var addDetail = function($tr, messages) {
 
 var tests = [];
 tests.push({
-  id: 'ws-support',
-  to: '#ws-tests',
-  title: 'Browser support for WebSocket API',
-  state: 'pending',
-  predicate: function($tr) {
-    return Q(!!Modernizr.websockets);
-  }
-});
-tests.push({
-  id: 'ws-connected',
-  to: '#ws-tests',
-  title: 'WebSocket connection to host',
-  state: 'pending',
-  predicate: function($tr) {
-    var deferred = Q.defer(), ws;
-    var payload = "HELLO";
-    try {
-      ws = new WebSocket("wss://echo.websocket.org/");
-      ws.onopen = function() { ws.send(payload); }
-      ws.onmessage = function(e) {
-        if(e.data === payload) {
-          deferred.resolve();
-        } else {
-          addDetail($tr, ["unexpected behavior: sent "+payload+", received "+e.data]);
-          deferred.reject();
-        }
-      }
-      ws.onerror = function(e) {
-        addDetail($tr, ["WebSocket error"]);
-        deferred.reject();
-      }
-    } catch(e) {
-      addDetail($tr, ["Exception thrown", e.message]);
-      deferred.reject();
-    }
-    return deferred.promise;
-  }
-});
-tests.push({
   id: 'sio-loaded',
   to: '#sio-tests',
   title: 'Socket.IO loaded',
