@@ -1,3 +1,5 @@
+require_dependency 'liveoak_compat'
+
 # Register the engine routes to allow this to become a gem and imported in other repositories
 LiveoakCompat::Engine.routes.draw do
   root 'runs#new'
