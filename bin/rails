@@ -7,3 +7,10 @@ end
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'
+
+
+ENGINE_ROOT = File.expand_path('../..', __FILE__)
+ENGINE_PATH = File.expand_path('../lib/liveoak_compat/engine', __FILE__)
+
+require 'rails/all'
+require 'rails/engine/commands'

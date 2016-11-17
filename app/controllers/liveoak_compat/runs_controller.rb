@@ -1,5 +1,3 @@
-require 'liveoak-compat'
-
 module LiveoakCompat
   class RunsController < ApplicationController
     def new
