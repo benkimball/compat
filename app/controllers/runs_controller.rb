@@ -1,7 +1,12 @@
-class RunsController < ApplicationController
-  def new
-  end
+require 'liveoak-compat'
 
-  def create
+module LiveoakCompat
+  class RunsController < ApplicationController
+    def new
+      puts 'lol'
+    end
+
+    def create
+    end
   end
 end
