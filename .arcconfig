@@ -1,6 +1,6 @@
 {
   "phabricator.uri" : "http://phabricator.liveoak.net/",
-  "arc.land.onto.default": "develop",
+  "arc.land.onto.default": "master",
   "history.immutable": true,
   "base": "git:merge-base(origin/develop), arc:prompt",
   "repository.callsign": "COMPAT"
