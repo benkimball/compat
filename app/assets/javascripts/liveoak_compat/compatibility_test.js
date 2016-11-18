@@ -114,7 +114,7 @@ tests.push({
     try {
       ActionCable.startDebugging();
       consumer = ActionCable.createConsumer();
-      subscription = consumer.subscriptions.create("EchoChannel", {
+      subscription = consumer.subscriptions.create("LiveoakCompat::EchoChannel", {
         initialized: function() {
           console.log("ActionCable subscription initialized");
         },

@@ -9,5 +9,5 @@ LiveoakCompat::Engine.routes.draw do
 end
 
 Rails.application.routes.draw do
-  mount LiveoakCompat::Engine => '/'
+  mount LiveoakCompat::Engine => '/', as: 'main'
 end
