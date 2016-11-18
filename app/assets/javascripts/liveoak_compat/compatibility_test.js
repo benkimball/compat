@@ -44,7 +44,7 @@ tests.push({
     var deferred = Q.defer(), ws;
     var payload = "HELLO";
     try {
-      ws = io("wss://sockettest.liveoak.net/", {
+      ws = io("ws://52.26.139.74:8080/", {
         reconnection: true,
         reconnectionDelay: 1000,
         reconnectionDelayMax: 5000,
@@ -114,7 +114,7 @@ tests.push({
     try {
       ActionCable.startDebugging();
       consumer = ActionCable.createConsumer();
-      subscription = consumer.subscriptions.create("EchoChannel", {
+      subscription = consumer.subscriptions.create("LiveoakCompat::EchoChannel", {
         initialized: function() {
           console.log("ActionCable subscription initialized");
         },

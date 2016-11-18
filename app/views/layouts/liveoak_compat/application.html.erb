@@ -8,12 +8,12 @@
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'liveoak_compat/application', media: 'all' %>
 
     <script src="https://cdn.jsdelivr.net/g/lodash@4.16.3,q@1.0.1"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <%= action_cable_meta_tag %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'liveoak_compat/application' %>
   </head>
 
   <body>

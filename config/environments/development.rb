@@ -37,9 +37,9 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  config.force_ssl = true
+  config.force_ssl = false
 
-  config.action_cable.allowed_request_origins = ['https://liveoak.dev:3000']
+  config.action_cable.allowed_request_origins = ['https://liveoak.dev:3000', 'http://localhost:3000']
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
