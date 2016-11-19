@@ -44,7 +44,7 @@ tests.push({
     var deferred = Q.defer(), ws;
     var payload = "HELLO";
     try {
-      ws = io("ws://52.26.139.74:8080/", {
+      ws = io("wss://phabricator.liveoak.net/", {
         reconnection: true,
         reconnectionDelay: 1000,
         reconnectionDelayMax: 5000,
