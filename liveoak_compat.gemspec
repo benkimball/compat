@@ -7,7 +7,7 @@ require 'liveoak_compat/version'
 Gem::Specification.new do |s|
   s.name = 'liveoak_compat'
   s.version = LiveoakCompat::VERSION
-  s.authors = ['Ben Kimball']
+  s.authors = ['Ben Kimball', 'Isaac Duran']
   s.email = 'ben@liveoak.net'
   s.homepage = 'https://github.com/liveoaktech/liveoak-compat'
   s.license = 'MIT'
