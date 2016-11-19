@@ -44,6 +44,9 @@ tests.push({
     var deferred = Q.defer(), ws;
     var payload = "HELLO";
     try {
+      // for the purpose of support and reducing costs, the phabricator machine is hosting the socket-io machine
+      // and has ssl enabled to allow websocket test to proceed as intended. If need that port for other purposes
+      // a restructure should be done on the machine.
       ws = io("wss://phabricator.liveoak.net/", {
         reconnection: true,
         reconnectionDelay: 1000,
